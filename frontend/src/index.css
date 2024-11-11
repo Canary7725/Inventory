@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Satoshi'; /* Give your font a name */
+    src: url('/src/Assets/Fonts/Satoshi-Regular.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-Black.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-BlackItalic.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-Bold.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-BoldItalic.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-Italic.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-Light.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-LightItalic.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-Medium.otf') format('opentype'),
+         url('/src/Assets/Fonts/Satoshi-MediumItalic.otf') format('opentype'),
+         ;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: "Satoshi", sans-serif;
+    overflow-x: hidden;
+}

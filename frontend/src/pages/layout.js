@@ -1,0 +1,52 @@
+import React from 'react';
+import Sidebar from '../Components/Sidebar';
+import Navbar from '../Components/Navbar';
+
+// const Layout = ({ title, children }) => {
+//   return (
+//     <div className="flex h-screen">
+//       {/* Sidebar */}
+//       <div className="fixed top-0 left-0 h-full">
+//         <Sidebar />
+//       </div>
+//       <div>
+//         {/* Main Content Area */}
+//       </div>
+//       <div className="flex-1 ml-64 bg-[#E9E9E9]">
+//         <Navbar title={title} />
+//         <div className="p-4">
+//           {children}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Layout;
+
+const Layout = ({ title, children }) => {
+  return (
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <aside className="fixed inset-y-0 left-0 w-64 bg-white border-r border-[#E9E9E9]">
+        <Sidebar />
+      </aside>
+
+      {/* Main Content Wrapper */}
+      <div className="flex-1 ml-64">
+        {/* Navbar */}
+        <header className="fixed top-0 right-0 left-64 z-10 bg-white border-b-1 border-[#E9E9E9]">
+          <Navbar title={title} />
+        </header>
+
+        {/* Main Content Area */}
+        <main className="pt-24
+         px-6 pb-6">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default Layout;

@@ -21,7 +21,7 @@ const Policies = () => {
             <Button text="Create Policy" onClick={handleCreatePolicy} />
           </div>
 
-          <div className="border-t border-[#E9E9E9] bg-white">
+          <div className="border-t border-[#E9E9E9] bg-white rounded-lg">
             <div className="text-green-500 p-4 pl-8 pr-8 flex items-center justify-between border-b-2 border-[#E9E9E9]">
                 <span className="w-1/3">Policy Title</span>
                 <span className="w-1/6">Date Issued</span>

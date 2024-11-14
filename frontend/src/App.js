@@ -16,6 +16,11 @@ import ContributeForm from "./pages/local/contributeForm";
 import LocalPolicies from "./pages/local/policies";
 import LocalComplaints from "./pages/local/complaints";
 import LocalCreateComplaintForm from "./pages/local/complaintForm";
+import WardHome from "./pages/ward/home";
+import WardProduction from "./pages/ward/production";
+import WardPolicies from "./pages/ward/policies";
+import WardComplaints from "./pages/ward/complaints";
+import WardCreateComplaintForm from "./pages/ward/complaintForm";
 
 import "./index.css";
 
@@ -41,6 +46,11 @@ const App = () => {
           <Route path="/local-policies" element={<LocalPolicies />} />
           <Route path="/local-complaints" element={<LocalComplaints />} />
           <Route path="/local-create-complaints-form" element={<LocalCreateComplaintForm />} />
+          <Route path="/ward-home" element={<WardHome />} />
+          <Route path="/ward-production" element={<WardProduction />} />
+          <Route path="/ward-policies" element={<WardPolicies />} />
+          <Route path="/ward-complaints" element={<WardComplaints />} />
+          <Route path="/ward-create-complaints-form" element={<WardCreateComplaintForm />} />
 
 
         </Routes>

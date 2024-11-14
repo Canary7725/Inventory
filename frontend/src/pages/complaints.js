@@ -9,7 +9,7 @@ const Complaints = () => {
     <div className="flex flex-col w-full">
       <Layout title="Complaints">
         <div className="p-6">
-          <div className="border-t border-[#E9E9E9] bg-white">
+          <div className="border-t rounded-xl border-[#E9E9E9] bg-white">
             <div className="text-green-500 p-4 pl-8 pr-8 flex items-center justify-between border-b-2 border-[#E9E9E9]">
               <span className="w-1/3">Complaints</span>
               <span className="w-1/6">Date Issued</span>

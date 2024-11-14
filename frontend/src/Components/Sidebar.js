@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom"; // For redirection
-import { useCookies } from "react-cookie"; // For managing cookies
+import { useNavigate } from "react-router-dom"; 
+import { useCookies } from "react-cookie"; 
 import logo from '../Assets/Images/logo.png';
 
 // Importing icons from react-icons
@@ -9,12 +9,24 @@ import { MdDashboard, MdReport, MdBarChart, MdPolicy, MdFeedback, MdSettings, Md
 const Sidebar = ({ username }) => {
     const [cookies, setCookie, removeCookie] = useCookies(["authToken"]);
     const navigate = useNavigate();
+
     const handleLogout = () => {
-        // Clear the auth token from localStorage and cookies
+        
         localStorage.removeItem("token");
-        removeCookie("authToken"); // Clear the cookie if it's set
-        navigate("/"); // Redirect to login page after logout
+        removeCookie("authToken"); 
+        navigate("/"); 
     };
+
+   
+    const routes = {
+        Dashboard: "/home",
+        "Request Report": "/request-report",
+        Forecast: "/forecast",
+        Policies: "/policies",
+        Complaints: "/complaints",
+        Settings: "/settings",
+    };
+
     return (
         <div className="h-screen w-52 bg-white-100 pl-10 pt-4 ">
             <div className="mb-8 p-4">
@@ -28,17 +40,24 @@ const Sidebar = ({ username }) => {
                     { name: 'Policies', icon: <MdPolicy /> },
                     { name: 'Complaints', icon: <MdFeedback /> }
                 ].map((item) => (
-                    <a href={`#${item.name.toLowerCase().replace(' ', '')}`} className="flex items-center py-2 text-gray-700 hover:bg-gray-200 rounded-md p-4" key={item.name}>
+                    <button
+                        onClick={() => navigate(routes[item.name])}
+                        className="flex items-center py-2 text-gray-700 hover:bg-gray-200 rounded-md p-4 w-full text-left"
+                        key={item.name}
+                    >
                         <span className="mr-3">{item.icon}</span>
                         {item.name}
-                    </a>
+                    </button>
                 ))}
             </nav>
             <div className="mt-auto">
-                <a href="#settings" className="flex items-center py-2 text-gray-700 hover:bg-gray-200 rounded-md p-4">
+                <button
+                    onClick={() => navigate(routes.Settings)}
+                    className="flex items-center py-2 text-gray-700 hover:bg-gray-200 rounded-md p-4 w-full text-left"
+                >
                     <MdSettings className="mr-3" />
                     Settings
-                </a>
+                </button>
                 <button
                     onClick={handleLogout}
                     className="flex items-center py-2 text-gray-700 hover:bg-gray-200 rounded-md w-full text-left p-4"

@@ -6,9 +6,6 @@ import logo from "../../Assets/Images/logo.png";
 // Importing icons from react-icons
 import {
   MdDashboard,
-  MdInbox,
-  MdOutbox,
-  MdBarChart,
   MdPolicy,
   MdFeedback,
   MdSettings,
@@ -16,7 +13,7 @@ import {
 } from "react-icons/md";
 import { TbPlant } from "react-icons/tb";
 
-const LocalSidebar = ({ username }) => {
+const WardSidebar = ({ username }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["authToken"]);
   const navigate = useNavigate();
 
@@ -26,16 +23,12 @@ const LocalSidebar = ({ username }) => {
     navigate("/");
   };
 
-  // Define routes for each sidebar item
   const routes = {
-    Dashboard: "/local-home",
-    "Production History": "/local-production",
-    "Outgoing Request": "/local-outgoing-requests",
-    Requests: "/local-requested-products",
-    Forecast: "/local-home",
-    Policies: "/local-policies",
-    Complaints: "/local-complaints",
-    Settings: "/local-home", // assuming this is the route for settings
+    Dashboard: "/ward-home",
+    Production: "/ward-production",
+    Policies: "/ward-policies",
+    Complaints: "/ward-complaints",
+    Settings: "/ward-home", 
   };
 
   return (
@@ -46,10 +39,7 @@ const LocalSidebar = ({ username }) => {
       <nav>
         {[
           { name: "Dashboard", icon: <MdDashboard /> },
-          { name: "Production History", icon: <TbPlant /> },
-          { name: "Outgoing Request", icon: <MdInbox /> },
-          { name: "Requests", icon: <MdOutbox /> },
-          { name: "Forecast", icon: <MdBarChart /> },
+          { name: "Production", icon: <TbPlant /> },
           { name: "Policies", icon: <MdPolicy /> },
           { name: "Complaints", icon: <MdFeedback /> },
         ].map((item) => (
@@ -83,4 +73,4 @@ const LocalSidebar = ({ username }) => {
   );
 };
 
-export default LocalSidebar;
+export default WardSidebar;

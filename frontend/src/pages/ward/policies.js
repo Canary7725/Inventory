@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LocalLayout from './layout';
+import WardLayout from './layout';
 import PolicyLink from '../../Components/PolicyLink';
 
 
-const LocalPolicies = () => {
-    const navigate = useNavigate();
+const WardPolicies = () => {
 
-    const handleCreatePolicy = () => {
-        navigate('/create-policy'); // Navigate to the CreatePolicy page
-      };
-    
     return (
-      
       <div className="flex flex-col w-full">
-        <LocalLayout title="Policies">
+        <WardLayout title="Policies">
         <div className="p-6">
          
           <div className="border-t border-[#E9E9E9] bg-white rounded-lg">
@@ -32,12 +26,12 @@ const LocalPolicies = () => {
             <PolicyLink />
           </div>
         </div>
-        </LocalLayout>
+        </WardLayout>
       </div>
     );
   };
   
   
-  export default LocalPolicies;
+  export default WardPolicies;
 
 

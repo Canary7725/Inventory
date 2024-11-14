@@ -5,6 +5,7 @@ import Layout from "./layout";
 import { RequestDefault } from '../Components/RequestDefault';
 import { RequestDrop } from '../Components/RequestDrop';
 
+
 const RequestReport = () => {
   const navigate = useNavigate();
   
@@ -20,7 +21,7 @@ const RequestReport = () => {
     <div className="flex flex-col w-full">
       <Layout title="Requests Report">
       <div className="p-6">
-        <div className="bg-white p-4 rounded shadow">
+        <div className="bg-white p-4 rounded-xl shadow">
         <div className="text-green-500 p-4 flex items-center justify-between border-b-2 border-[#E9E9E9]">
             <button className="text-white w-2px h-2px mr-4"><MdArrowDropDown size={20}/></button>
             <span className="w-1/3">Municipality/ VDC</span>

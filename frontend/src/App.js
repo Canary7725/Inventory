@@ -8,6 +8,15 @@ import RequestReport from "./pages/requestReport";
 import ReadPolicy from "./pages/readPolicy";
 import Complaints from "./pages/complaints";
 import LocalHome from "./pages/local/home";
+import LocalProduction from "./pages/local/production";
+import OutgoingRequests from "./pages/local/outgoingRequest";
+import CreateRequestForm from "./pages/local/createRequestForm";
+import RequestedProducts from "./pages/local/requestedProducts";
+import ContributeForm from "./pages/local/contributeForm";
+import LocalPolicies from "./pages/local/policies";
+import LocalComplaints from "./pages/local/complaints";
+import LocalCreateComplaintForm from "./pages/local/complaintForm";
+
 import "./index.css";
 
 const App = () => {
@@ -15,7 +24,7 @@ const App = () => {
     <div className="App p-0">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>}/> 
+          <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/request-report" element={<RequestReport />} />
@@ -24,6 +33,16 @@ const App = () => {
           <Route path="/create-policy" element={<CreatePolicy />} />
           <Route path="/complaints" element={<Complaints />} />
           <Route path="/local-home" element={<LocalHome />} />
+          <Route path="/local-production" element={<LocalProduction />} />
+          <Route path="/local-outgoing-requests" element={<OutgoingRequests />} />
+          <Route path="/local-create-request-form" element={<CreateRequestForm />} />
+          <Route path="/local-requested-products" element={<RequestedProducts />} />
+          <Route path="/local-contribute-form" element={<ContributeForm />} />
+          <Route path="/local-policies" element={<LocalPolicies />} />
+          <Route path="/local-complaints" element={<LocalComplaints />} />
+          <Route path="/local-create-complaints-form" element={<LocalCreateComplaintForm />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>

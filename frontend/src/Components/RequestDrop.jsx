@@ -8,7 +8,7 @@ export function RequestDrop({ toggleExpand }) {
       <div className="bg-[#BDEECB] text-black-bold p-4 flex items-center justify-between cursor-pointer" onClick={toggleExpand}>
         <button className="text-black w-2px h-2px mr-4"><MdArrowDropUp size={20}/></button>
         <span className="w-1/3">Suryabinayak</span>
-        <span className="w-1/3">Shabda</span>
+        <span className="w-1/3">Potato</span>
         <span className="w-1/6">10,000kg</span>
         <span className="w-1/6 text-green-500">10/11/2024</span>
       </div>

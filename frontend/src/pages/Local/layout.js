@@ -1,6 +1,6 @@
-import React from 'react';
-import Sidebar from '../Components/Sidebar';
-import Navbar from '../Components/Navbar';
+import React from "react";
+import Sidebar from "../../Components/Local/Sidebar";
+import Navbar from "../../Components/Navbar";
 
 const Layout = ({ title, children }) => {
   return (
@@ -18,14 +18,15 @@ const Layout = ({ title, children }) => {
         </header>
 
         {/* Main Content Area */}
-        <main className="pt-24
-         px-6 pb-6">
+        <main
+          className="pt-24
+         px-6 pb-6"
+        >
           {children}
         </main>
       </div>
     </div>
   );
 };
-
 
 export default Layout;

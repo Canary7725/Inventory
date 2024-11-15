@@ -1,7 +1,7 @@
 // src/components/LoginForm.js
 import { useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,25 +9,34 @@ const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/auth/login", {
-        username,
-        password,
-      },        
-      { withCredentials: true }
-    );
+      const response = await axios.post(
+        "http://localhost:4000/api/auth/login",
+        {
+          username,
+          password,
+        },
+        { withCredentials: true }
+      );
 
-    const {success}=response.data;
-      if (success) {
-        navigate("/home")
+      const { success, user } = response.data;
+      console.log(user);
+
+      if (success && user.role === "local") {
+        navigate("/local-home");
+        localStorage.setItem("token", response.data.token);
+      } else if (success && user.role === "central") {
+        navigate("/home");
         // Save the token (if you want to store it in localStorage for later use)
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("token", response.data.token);
+      } else if (success && user.role === "ward") {
+        navigate("/ward-home");
+        localStorage.setItem("token", response.data.token);
       }
     } catch (err) {
-      setError(err.response ? err.response.data.message : "An error occurred");            
+      setError(err.response ? err.response.data.message : "An error occurred");
     }
   };
 
@@ -37,7 +46,9 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-center">Login</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-sm font-semibold">Username</label>
+            <label htmlFor="username" className="block text-sm font-semibold">
+              Username
+            </label>
             <input
               id="username"
               type="text"
@@ -48,7 +59,9 @@ const Login = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-semibold">Password</label>
+            <label htmlFor="password" className="block text-sm font-semibold">
+              Password
+            </label>
             <input
               id="password"
               type="password"
@@ -63,7 +76,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full py-2 mt-4 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            className="w-full py-2 mt-4 text-white bg-green-500 rounded-md hover:bg-green-600"
           >
             Login
           </button>

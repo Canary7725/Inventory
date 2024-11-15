@@ -10,8 +10,10 @@ const HighestProducingVegetables = ({ username }) => {
       setError(null);
 
       try {
-        const response = await axios.get(`http://localhost:4000/api/production/highest?username=${username}`);
-        
+        const response = await axios.get(
+          `http://localhost:4000/api/production/highest?username=${username}`
+        );
+
         if (response.data && response.data.length > 0) {
           setProductions(response.data);
         } else {
@@ -28,20 +30,30 @@ const HighestProducingVegetables = ({ username }) => {
   }, [username]);
 
   if (error) {
-    return (    <div className="bg-white p-4 rounded-xl shadow">
-      <div className="flex justify-between">
-        <h2 className="text-lg font-bold p-4">Top 3 Highest Producing Vegetables</h2>
-        <a href="#" className="text-green-500 hover:underline p-4">See All</a>
+    return (
+      <div className="bg-white p-4 rounded-xl shadow">
+        <div className="flex justify-between">
+          <h2 className="text-lg font-bold p-4">
+            Top 3 Highest Producing Vegetables
+          </h2>
+          <a href="#" className="text-green-500 hover:underline p-4">
+            See All
+          </a>
+        </div>
+        <p>{error}</p>
       </div>
-      <p>{error}</p>
-    </div>)
+    );
   }
 
   return (
     <div className="bg-white p-4 rounded-xl shadow">
       <div className="flex justify-between">
-        <h2 className="text-lg font-bold p-4">Top 3 Highest Producing Vegetables</h2>
-        <a href="#" className="text-green-500 hover:underline p-4">See All</a>
+        <h2 className="text-lg font-bold p-4">
+          Top 3 Highest Producing Vegetables
+        </h2>
+        <a href="#" className="text-green-500 hover:underline p-4">
+          See All
+        </a>
       </div>
       <table className="w-full text-left">
         <thead>
@@ -54,7 +66,8 @@ const HighestProducingVegetables = ({ username }) => {
           {productions.map((item, index) => (
             <tr key={index}>
               <td className="py-1 w-56 p-4">{item.vegetableName}</td>
-              <td className="py-1 w-56 p-4">{item.totalQuantity}</td> {/* Use totalQuantity as per backend response */}
+              <td className="py-1 w-56 p-4">{item.totalQuantity}</td>{" "}
+              {/* Use totalQuantity as per backend response */}
             </tr>
           ))}
         </tbody>

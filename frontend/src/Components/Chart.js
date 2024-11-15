@@ -12,7 +12,7 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const Chart = () => {
+const Chart = (vegetableOptions) => {
   const [selectedProduct, setSelectedProduct] = useState('Potato');
   const products = ['Potato', 'Tomato', 'Spinach'];
 
@@ -72,8 +72,8 @@ const Chart = () => {
           onChange={(e) => setSelectedProduct(e.target.value)}
           className="border rounded px-3 py-1"
         >
-          {products.map((product, index) => (
-            <option key={index} value={product}>{product}</option>
+          {products.map((vegetableOptions, index) => (
+            <option key={index} value={vegetableOptions}>{vegetableOptions}</option>
           ))}
         </select>
       </div>

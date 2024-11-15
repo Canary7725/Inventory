@@ -26,7 +26,10 @@ const registerUser = async (req, res) => {
       areaName,
     });
 
-    res.status(201).json({ message: "User registered successfully", user: { username: newUser.username } });
+    res.status(201).json({
+      message: "User registered successfully",
+      user: { username: newUser.username },
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
@@ -37,9 +40,8 @@ const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    
     // Find the user in the database by username
-    const user = await User.findOne({ where: { username } });    
+    const user = await User.findOne({ where: { username } });
     // Check if user exists
     if (!user) {
       return res.status(401).json({ message: "Invalid username or password" });
@@ -52,15 +54,23 @@ const loginUser = async (req, res) => {
     }
 
     // Generate JWT token with user's username as payload
-    const token = jwt.sign({ username: user.username }, "your_jwt_secret", { expiresIn: "5h" });
+    const token = jwt.sign(
+      { username: user.username, role: user.role, user_id: user.id },
+      "your_jwt_secret",
+      { expiresIn: "5h" }
+    );
 
     // Set the token in a cookie
     res.cookie("authToken", token, { httpOnly: true, maxAge: 18000000 }); // 1 hour expiration
 
-    return res.status(200).json({ message: "Login successful",success:true,token });
+    return res
+      .status(200)
+      .json({ message: "Login successful", success: true, token, user });
   } catch (error) {
     // Send server error response if something went wrong
-    return res.status(500).json({ message: "Server error", error: error.message });
+    return res
+      .status(500)
+      .json({ message: "Server error", error: error.message });
   }
 };
 
@@ -71,20 +81,18 @@ const getAllUsers = async (req, res) => {
   res.json({ message: "Fetched all users", data: users });
 };
 
-
 const getLocalUsers = async (req, res) => {
   try {
     const users = await User.findAll({
       where: { role: "local" },
       attributes: ["username"],
     });
-    
+
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch local users" });
   }
 };
-
 
 // Get User by ID
 const getUserById = async (req, res) => {
@@ -143,5 +151,12 @@ const deleteUser = async (req, res) => {
   }
 };
 
-
-module.exports = { registerUser,getAllUsers, getUserById,getLocalUsers, loginUser, updateUser, deleteUser };
+module.exports = {
+  registerUser,
+  getAllUsers,
+  getUserById,
+  getLocalUsers,
+  loginUser,
+  updateUser,
+  deleteUser,
+};

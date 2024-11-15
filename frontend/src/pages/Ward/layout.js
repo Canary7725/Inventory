@@ -1,13 +1,13 @@
-import React from 'react';
-import Sidebar from '../Components/Sidebar';
-import Navbar from '../Components/Navbar';
+import React from "react";
+import WardSidebar from "../../Components/Ward/Sidebar";
+import Navbar from "../../Components/Navbar";
 
-const Layout = ({ title, children }) => {
+const WardLayout = ({ title, children }) => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <aside className="fixed inset-y-0 left-0 w-64 bg-white border-r border-[#E9E9E9]">
-        <Sidebar />
+        <WardSidebar />
       </aside>
 
       {/* Main Content Wrapper */}
@@ -18,8 +18,10 @@ const Layout = ({ title, children }) => {
         </header>
 
         {/* Main Content Area */}
-        <main className="pt-24
-         px-6 pb-6">
+        <main
+          className="pt-24
+         px-6 pb-6"
+        >
           {children}
         </main>
       </div>
@@ -27,5 +29,4 @@ const Layout = ({ title, children }) => {
   );
 };
 
-
-export default Layout;
+export default WardLayout;
